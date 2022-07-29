@@ -26,7 +26,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        Project::create($request->all());
+        return Project::create($request->all());
     }
 
     /**
@@ -45,11 +45,12 @@ class ProjectController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  Project  $project
-     * @return \Illuminate\Http\Response
+     * @return Project
      */
     public function update(Request $request, Project $project)
     {
         $project->update($request->all());
+        return $project;
     }
 
     /**
@@ -61,5 +62,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
+        return response()->noContent();
     }
 }
